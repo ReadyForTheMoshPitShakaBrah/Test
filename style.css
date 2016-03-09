@@ -2,6 +2,7 @@
     padding: 10px; /* Поля */
     border: solid 1px #000; /* Параметры рамки */
     background: #8080FF; /* Цвет фона */
+    box-shadow: inset 0 0 6px;
    }
 .layout {
     margin: 15px 0; /* Отступы сверху и снизу */ 
@@ -11,9 +12,8 @@
     max-width: 60%; /* Максимальная ширина */
    }
 .sidebar { /* Навигация по сайту */
-    min-width: 200;
-    max-width: 15%; /* Ширина меню */
-    float: bottom; /* Состыковка с другим слоем по горизонтали */
+    width: 15%; /* Ширина меню */
+    float: left; /* Состыковка с другим слоем по горизонтали */
    }
 .sidebar ul {
     list-style: none; /* Убираем маркеры */
