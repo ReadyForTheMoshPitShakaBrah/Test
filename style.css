@@ -21,7 +21,7 @@
 .content { /* Основное содержание страницы */
     margin-left: 35%px; /* Отступ слева */
    }
-#l1, #l2 {
+#l1, #l2, #l3, #l4 {
     display: none;
     text-align: center;
 }
