@@ -1,1 +1,36 @@
-Hello world
+<!DOCTYPE html>
+<<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+	<title>Test</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+    <div class="sidebar">
+      <h2>TestMenu</h2>
+      <ul>
+        <li><a id="show1">Link1</li>
+        <li><a id="show2">Link2</li>
+      </ul>
+    </div>
+    <div class="content">
+      <div id="l1">
+        <h1>Some Data for Link1</h1>
+      </div>
+      <div id="l2">
+        <h1>Some Data for Link2</h1>
+      </div>
+   <script>
+   	$('#show1').click(function(){
+   		$('#l1').stop(true, true).slideDown('slow');
+   		$('#l2').slideUp('slow');
+   	});
+   	$('#show2').click(function{
+   		$('#l2').stop(true, true).slideDown('slow');
+   		$('#l1').slideUp('slow');
+   	});
+   </script>
+</body>
+</html>>
