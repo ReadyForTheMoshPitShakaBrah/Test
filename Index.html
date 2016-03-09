@@ -11,24 +11,26 @@
     <div class="sidebar">
       <h2>TestMenu</h2>
       <ul>
-        <li>Link1</li>
-        <li>Link2</li>
-        <li>Link3</li>
-        <li>Link4</li>
+        <li><a id="show1">Link1</li>
+        <li><a id="show2">Link2</li>
       </ul>
     </div>
     <div class="content">
-      <div class="link1">
+      <div id="l1">
         <h1>Some Data for Link1</h1>
       </div>
-      <div class="link2">
+      <div id="l2">
         <h1>Some Data for Link2</h1>
       </div>
-      <div class="link3">
-        <h1>Some Data for Link3</h1>
-      </div>
-      <div class="link4">
-        <h1>Some Data for Link4</h1>
-      </div>
+   <script>
+   	$('#show1').click(function(){
+   		$('#l1').stop(true, true).slideDown('slow');
+   		$('#l2').slideUp('slow');
+   	});
+   	$('#show2').click(function{
+   		$('#l2').stop(true, true).slideDown('slow');
+   		$('#l1').slideUp('slow');
+   	});
+   </script>
 </body>
 </html>>
