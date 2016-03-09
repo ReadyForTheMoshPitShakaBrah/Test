@@ -20,3 +20,9 @@
 .content { /* Основное содержание страницы */
     margin-left: 200px; /* Отступ слева */
    }
+#l1 {
+    display: none;
+}
+#l2 {
+    display: none;
+}
