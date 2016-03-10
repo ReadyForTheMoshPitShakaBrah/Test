@@ -3,43 +3,25 @@
 <head>
   <meta charset=utf-8 />
 	<title>Test</title>
-	<link href="style.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery-2.2.1.min.js"></script>
+  <script src="js/script.js"></script>
 </head>
 <body>
   <div class="layout">
     <div class="sidebar">
       <h3>TestMenu</h3>
       <ul>
-        <li><p onclick='document.getElementById("l1").style.display = "block";
-        document.getElementById("l2").style.display = "none";
-        document.getElementById("l3").style.display = "none";
-        document.getElementById("l4").style.display = "none";'>Показать1</p></li>
-        <li><p onclick='document.getElementById("l2").style.display = "block";
-        document.getElementById("l1").style.display = "none";
-        document.getElementById("l3").style.display = "none";
-        document.getElementById("l4").style.display = "none";'>Показать2</p></li>
-        <li><p onclick='document.getElementById("l3").style.display = "block";
-        document.getElementById("l1").style.display = "none";
-        document.getElementById("l2").style.display = "none";
-        document.getElementById("l4").style.display = "none";'>Показать3</p></li>
-        <li><p onclick='document.getElementById("l4").style.display = "block";
-        document.getElementById("l1").style.display = "none";
-        document.getElementById("l2").style.display = "none";
-        document.getElementById("l3").style.display = "none";'>Показать4</p></li>
+        <li><p id="b1">link 1</p></li>
+        <li><p id="b2">link 2</p></li>
+        <li><p id="b3">link 3</p></li>
+        <li><p id="b4">link 4</p></li>
       </ul>
     </div>
     <div class="content">
-      <div id="l1">
-        <h3>Some Data for Link1</h3>
-      </div>
-      <div id="l2">
-        <h3>Some Data for Link2</h3>
-      </div>
-      <div id="l3">
-        <h3>Some Data for Link3</h3>
-      </div>
-      <div id="l4">
-        <h3>Some Data for Link4</h3>
-      </div>
-</body>
+      <h3 id="d1">Some Data for Link1</h3>
+      <h3 id="d2">Some Data for Link2</h3>
+      <h3 id="d3">Some Data for Link3</h3>
+      <h3 id="d4">Some Data for Link4</h3>
+    </div>
 </html>

@@ -1,4 +1,4 @@
-.sidebar, .content { 
+.sidebar, .content {
     padding: 10px; /* Поля */
     border: solid 1px #000; /* Параметры рамки */
     background: #8080FF; /* Цвет фона */
@@ -6,7 +6,7 @@
     text-align: center;
    }
 .layout {
-    margin: 15px 0; /* Отступы сверху и снизу */ 
+    margin: 15px 0; /* Отступы сверху и снизу */
     margin-left: 20%;
     overflow: hidden; /* Отменяем действие float */
     min-width: 800; /* Минимальная ширина */
@@ -23,6 +23,3 @@
 .content { /* Основное содержание страницы */
     margin-left: 35%px; /* Отступ слева */
    }
-#l1, #l2, #l3, #l4 {
-    display: none;
-}
