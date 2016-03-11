@@ -24,7 +24,7 @@ $(document).ready(function() {
   });
 
   $('#b3').on("click", function() {
-    getfromjson('JSON/data3.json', 0, 10);
+    getfromjson('JSON/data2.json', 0, 17);
   });
 
   $('#b4').on("click", function() {
