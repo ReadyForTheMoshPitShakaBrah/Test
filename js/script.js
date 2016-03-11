@@ -9,7 +9,7 @@ $(document).ready(function() {
   var getfromjson = function(jsonurl, page, pageEnd) {
     $.getJSON(jsonurl, function(data) {
       var jsonstring = '';
-      for (var num = page; num < pageEnd; num++) {
+      for (var num = page; num <= pageEnd; num++) {
         jsonstring+='<div>'+data[num].id+': '+data[num].name+'<br>'+'</div>';
       }
       $(".content").html(jsonstring);
