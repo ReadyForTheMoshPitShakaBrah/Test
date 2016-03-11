@@ -12,11 +12,11 @@ $(document).ready(function() {
   });
 
   $('#b2').on("click", function() {
-    $(".content").html(getfromjson('data.json', 1, 4));
+    $(".content").html(getfromjson('JSON/data.json', 1, 4));
   });
 
   $('#b3').on("click", function() {
-    $('.content').html(getfromjson('data2.json', 1, 4));
+    $('.content').html(getfromjson('JSON/data2.json', 1, 4));
   });
 
   $('#b4').on("click", function() {
