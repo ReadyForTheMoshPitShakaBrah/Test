@@ -6,30 +6,27 @@ function include(url) {
 include ("jquery-2.2.1.min.js");
 
 $(document).ready(function() {
-
+  var getfromjson = function(jsonurl, page, pageEnd) {
+    $.getJSON(jsonurl, function(data) {
+      var jsonstring = '';
+      for (var num = page; num < pageEnd; num++) {
+        jsonstring+='<div>'+data[num].id+': '+data[num].name+'<br>'+'</div>';
+      }
+      $(".content").html(jsonstring);
+    })
+  };
   $('#b1').on("click", function() {
     $(".content").html("<div> HElloWorld! </div>");
   });
 
   $('#b2').on("click", function() {
-    $(".content").html(getfromjson('JSON/data.json', 1, 4));
+    getfromjson('JSON/data.json', 0, 4);
   });
 
   $('#b3').on("click", function() {
-    $('.content').html(getfromjson('JSON/data2.json', 1, 4));
+    getfromjson('JSON/data3.json', 0, 10);
   });
 
   $('#b4').on("click", function() {
   });
-
-  var getfromjson = function(jsonurl, page = 0, pageEnd = 1) {
-    $.getJSON(jsonurl, processData);
-    function processData(data) {
-      var jsonstring = '';
-      for( var num = page; num < pageEnd; num++) {
-        jsonstring+='<div>'+data[num].mytitle+': '+data[num].myarticle+'<br>'+'</div>';
-      };
-      return jsonstring;
-    };
-  };
-});
+})
