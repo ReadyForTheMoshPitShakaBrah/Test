@@ -29,7 +29,7 @@ $(document).ready(function() {
 
   $('#b3').on("click", function() {
     $(".bottom").hide();
-    getfromjson('JSON/data3.json', 0, 10);
+    getfromjson('JSON/data3.json', 0, 18);
   });
 
   $('#b4').on("click", function() {
