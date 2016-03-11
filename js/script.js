@@ -33,6 +33,8 @@ $(document).ready(function() {
   });
 
   $('#b4').on("click", function() {
+  var page;
+  var pageEnd;
     $(".bottom").show();
 	  $.getJSON('JSON/data3.json', processData);
     function processData(data) {
