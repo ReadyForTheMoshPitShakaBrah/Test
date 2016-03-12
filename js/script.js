@@ -7,16 +7,26 @@ include ("jquery-2.2.1.min.js");
 
 $(document).ready(function() {
   $(".bottom").hide();
-  var getfromjson = function(jsonurl, page, pageEnd) {
+  var lastPage;
+  var numLastPage;
+  var page = 0;
+  var pageEnd = 0;
+  var jsonstring;
+  var getfromjson = function(jsonurl, startid = page, lastid = pageEnd) {
     $.getJSON(jsonurl, function(data) {
-      var jsonstring = '<table>';
-      for (var num = page; num < pageEnd; num++) {
+      jsonstring = '<table>';
+      for (var num = startid; num < lastid; num++) {
         jsonstring+='<tr>'+'<th>'+data[num].id+'</th>'+'<th>'+data[num].name+'</th>'+'</tr>';
       };
       jsonstring += '</table>';
       $(".content").html(jsonstring);
     })
   };
+  $.getJSON('JSON/data3.json', processData);
+  function processData(data) {
+  lastPage = data.length % 5;
+  numLastPage = data.length - lastPage;
+  }
   $('#b1').on("click", function() {
     $(".bottom").hide();
     $(".content").html("<div> HElloWorld! </div>");
@@ -24,63 +34,56 @@ $(document).ready(function() {
 
   $('#b2').on("click", function() {
     $(".bottom").hide();
-    getfromjson('JSON/data.json', 0, 4);
+    page = 0;
+    pageEnd = 4;
+    getfromjson('JSON/data.json');
   });
 
   $('#b3').on("click", function() {
     $(".bottom").hide();
-    getfromjson('JSON/data3.json', 0, 18);
+    page = 0;
+    pageEnd = 18;
+    getfromjson('JSON/data3.json');
   });
 
   $('#b4').on("click", function() {
-  page = 0;
-  pageEnd = page + 5;
     $(".bottom").show();
-	  $.getJSON('JSON/data3.json', processData);
-    function processData(data) {
-		lastPage = data.length % 5;
-		numLastPage = data.length - lastPage;
-	}
-		page = 0 ;
-		pageEnd = 5;
-    getfromjson('JSON/data3.json',page, pageEnd);
-      $('.bottom').show();
+    console.log(page, pageEnd);
+    page = 0;
+    pageEnd = 5;
+    getfromjson('JSON/data3.json')
+  });
 
   $('#Next').on("click", function() {
-		if(pageEnd <= numLastPage) {
-			if(pageEnd == numLastPage) {
-		      page += 5;
-		      pageEnd += 5;
-		      empty = ' ';
-		      getfromjson('JSON/data3.json', page, numLastPage+lastPage);
-		  }
-		  else{
-        page = pageEnd;
-        pageEnd += 5;
-        getfromjson('JSON/data3.json', page, pageEnd);
-	    };
-    };
+    if (pageEnd + 5 >= numLastPage + lastPage) {
+      page = numLastPage;
+      pageEnd = page + lastPage;
+    }
+    else {
+      page = pageEnd;
+      pageEnd += 5;
+    }
+    getfromjson('JSON/data3.json');
   });
 
 	$('#Prvs').on("click", function(){
 		if (page > 4){
-      if (page == numLastPage) pageEnd -= lastPage
-      else pageEnd -= 5;
+      if (page == numLastPage) pageEnd -= lastPage;
+      else pageEnd = page;
       page -= 5;
-      getfromjson('JSON/data3.json', page, pageEnd);
+      getfromjson('JSON/data3.json');
 	   }
   });
 
   $('#First').on("click", function() {
     page = 0;
     pageEnd = 5;
-    getfromjson('JSON/data3.json', page, pageEnd);
+    getfromjson('JSON/data3.json');
   });
 
   $('#Last').on("click", function() {
     page = numLastPage;
     pageEnd = page + lastPage;
-    getfromjson('JSON/data3.json', numLastPage, numLastPage+lastPage);
+    getfromjson('JSON/data3.json');
   })
-  });
 });
