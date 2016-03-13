@@ -12,7 +12,29 @@ $(document).ready(function() {
   var page = 0;
   var pageEnd = 0;
   var jsonstring;
-  var getfromjson = function(jsonurl, startid = page, lastid = pageEnd) {
+  var numpage = function(page) {
+    $('#First').show();
+    $('#Prvs').show();
+    $('#Current').show();
+    $('#Next').show();
+    $('#Last').show();
+    $('#First').html("First: 1");
+    $('#Prvs').html("Previos: " + page/5);
+    $('#Current').html("Current: " +(page/5+1));
+    $('#Next').html("Next: "+ (page/5+2));
+    $('#Last').html("Last: " + (numLastPage/5+1));
+    if (page==0) {
+      $('#First').hide();
+      $('#Prvs').hide();
+    }
+    if (page + 5 > numLastPage) {
+      $('#Next').hide();
+      $('#Last').hide();
+    }
+  };
+  function getfromjson(jsonurl, page, pageEnd) {
+    startid = page;
+    lastid = pageEnd;
     $.getJSON(jsonurl, function(data) {
       jsonstring = '<table>';
       for (var num = startid; num < lastid; num++) {
@@ -36,22 +58,22 @@ $(document).ready(function() {
     $(".bottom").hide();
     page = 0;
     pageEnd = 4;
-    getfromjson('JSON/data.json');
+    getfromjson('JSON/data.json', page, pageEnd);
   });
 
   $('#b3').on("click", function() {
     $(".bottom").hide();
     page = 0;
     pageEnd = 18;
-    getfromjson('JSON/data3.json');
+    getfromjson('JSON/data3.json', page, pageEnd);
   });
 
   $('#b4').on("click", function() {
     $(".bottom").show();
-    console.log(page, pageEnd);
     page = 0;
     pageEnd = 5;
-    getfromjson('JSON/data3.json')
+    getfromjson('JSON/data3.json', page, pageEnd)
+    numpage(page);
   });
 
   $('#Next').on("click", function() {
@@ -63,7 +85,8 @@ $(document).ready(function() {
       page = pageEnd;
       pageEnd += 5;
     }
-    getfromjson('JSON/data3.json');
+    numpage(page);
+    getfromjson('JSON/data3.json', page, pageEnd);
   });
 
 	$('#Prvs').on("click", function(){
@@ -71,19 +94,22 @@ $(document).ready(function() {
       if (page == numLastPage) pageEnd -= lastPage;
       else pageEnd = page;
       page -= 5;
-      getfromjson('JSON/data3.json');
+      numpage(page);
+      getfromjson('JSON/data3.json', page, pageEnd);
 	   }
   });
 
   $('#First').on("click", function() {
     page = 0;
     pageEnd = 5;
-    getfromjson('JSON/data3.json');
+    numpage(page);
+    getfromjson('JSON/data3.json', page, pageEnd);
   });
 
   $('#Last').on("click", function() {
     page = numLastPage;
     pageEnd = page + lastPage;
-    getfromjson('JSON/data3.json');
+    numpage(page);
+    getfromjson('JSON/data3.json', page, pageEnd);
   })
 });
